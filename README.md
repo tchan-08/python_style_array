@@ -58,20 +58,3 @@ int main() {
 gcc -o array main.c
 ./array
 ```
-
-## Notes
-
-- Memory is reallocated on every `append`, `pop`, `insert`, and
-  `remove_item` call — simple, but not optimized for large-scale use
-  (no capacity/growth-factor strategy).
-- `sort` uses bubble sort with an early-exit optimization when no swaps
-  occur in a pass.
-- No bounds checking beyond `insert`; `remove_item` and `pop` report
-  errors via `perror` but don't halt execution.
-
-## Possible Improvements
-
-- Add a capacity field to reduce the number of `realloc` calls
-- Add generic (`void *`) support instead of `int`-only storage
-- Add a `free_array()` function to release memory
-- Replace bubble sort with a faster algorithm for larger datasets
